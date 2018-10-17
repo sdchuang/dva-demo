@@ -1,0 +1,17 @@
+
+.normal {
+  font-family: Georgia, sans-serif;
+  margin-top: 3em;
+  text-align: center;
+}
+
+.con{
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+.count{
+  font-size: 36px;
+  line-height: 140px;
+}

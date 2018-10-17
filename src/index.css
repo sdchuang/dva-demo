@@ -1,0 +1,14 @@
+
+html, body, :global(#root) {
+  height: 100%;
+}
+
+div{
+  box-sizing: border-box;
+}
+
+*{
+  margin: 0;
+  border: 0;
+}
+
