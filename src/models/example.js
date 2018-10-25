@@ -25,7 +25,6 @@ export default {
       yield put({type:'exam',payload:res})
     },
     *mockTest({payload},{put,call}){
-      console.log('mock effect')
       yield call(mockData)
     }
   },
@@ -41,7 +40,7 @@ export default {
     exam(state,{payload}){
       console.log(payload)
       const newTopic = payload.data.data;
-      console.log(newTopic)
+      console.log('999',newTopic)
       return {
         ...state,
         topicList:newTopic

@@ -36,7 +36,7 @@ class IndexPage extends React.Component{
           <button onClick={()=>this.exam()}>exam</button>
         </div>
         <div>
-          {
+          {/* {
             count.topicList.map((item, i) => {
               return(
                 <li key={i}>
@@ -44,7 +44,7 @@ class IndexPage extends React.Component{
                 </li>
               )
             })
-          }
+          } */}
         </div>
       </div>
     )
