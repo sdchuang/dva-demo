@@ -1,5 +1,5 @@
 
-import { topic } from '../services/exam'
+import { topic, mockData } from '../services/exam'
 
 export default {
 
@@ -12,6 +12,7 @@ export default {
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
+
     },
   },
 
@@ -22,6 +23,10 @@ export default {
     *topicData({payload},{put,call}){
       const res = yield call(topic,{payload})
       yield put({type:'exam',payload:res})
+    },
+    *mockTest({payload},{put,call}){
+      console.log('mock effect')
+      yield call(mockData)
     }
   },
 
@@ -35,7 +40,8 @@ export default {
     },
     exam(state,{payload}){
       console.log(payload)
-      const newTopic = state.topicList;
+      const newTopic = payload.data.data;
+      console.log(newTopic)
       return {
         ...state,
         topicList:newTopic
