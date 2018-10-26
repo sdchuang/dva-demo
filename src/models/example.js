@@ -38,9 +38,8 @@ export default {
       }
     },
     exam(state,{payload}){
-      console.log(payload)
-      const newTopic = payload.data.data;
-      console.log('999',newTopic)
+      const newTopic = payload;
+      // console.log('999',payload)
       return {
         ...state,
         topicList:newTopic

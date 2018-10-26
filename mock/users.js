@@ -32,7 +32,7 @@ export default {
   '/api/topics'(req,res){
     res.json({
       success: true,
-      data: topicList,
+      data: topicList.data,
     })
   },
 

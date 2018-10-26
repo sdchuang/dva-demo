@@ -20,10 +20,10 @@ class IndexPage extends React.Component{
     })
 
     
-    console.log(this.props.count)
-    this.props.dispatch({
-      type:'count/mockTest',
-    })
+    // console.log(this.props.count)
+    // this.props.dispatch({
+    //   type:'count/mockTest',
+    // })
   }
   render(){
     const { count } = this.props;
@@ -36,7 +36,7 @@ class IndexPage extends React.Component{
           <button onClick={()=>this.exam()}>exam</button>
         </div>
         <div>
-          {/* {
+          {
             count.topicList.map((item, i) => {
               return(
                 <li key={i}>
@@ -44,7 +44,7 @@ class IndexPage extends React.Component{
                 </li>
               )
             })
-          } */}
+          }
         </div>
       </div>
     )
