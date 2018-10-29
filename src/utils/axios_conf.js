@@ -3,7 +3,7 @@ import axios from 'axios';
 import {config} from '../../config/mock_conf'
 
 let util = {};
-
+console.log(config.env().baseUrl)
 util.ajax = axios.create({
     // baseURL: process.env.API_ROOT,
     baseURL:config.env().baseUrl,
