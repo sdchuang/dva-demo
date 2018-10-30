@@ -1,9 +1,9 @@
 
-import { topic, mockData } from '../services/exam'
+import { topic } from '../services/exam'
 
 export default {
 
-  namespace: 'count',
+  namespace: 'topic',
 
   state: {
     cur:0,
@@ -23,20 +23,11 @@ export default {
     *topicData({payload},{put,call}){
       const res = yield call(topic,{payload})
       yield put({type:'exam',payload:res})
+      // yield put({ type: 'save', payload:res });
     },
-    *mockTest({payload},{put,call}){
-      yield call(mockData)
-    }
   },
 
   reducers: {
-    add(state){
-      const newCur = state.cur + 1;
-      return {
-        ...state,
-        cur:newCur
-      }
-    },
     exam(state,{payload}){
       const newTopic = payload;
       // console.log('999',payload)

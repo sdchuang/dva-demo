@@ -1,42 +1,23 @@
 import React from 'react';
 import { connect } from 'dva';
 
-import { NavBar, TabBar, List, Flex } from 'antd-mobile';
-const Item = List.Item;
-const Brief = Item.Brief;
+import Home from './pages/Home'
+
+import { NavBar, TabBar } from 'antd-mobile';
 
 class IndexPage extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'yellowTab',
       hidden: false,
       fullScreen: false,
     };
   }
   componentDidMount(){
-    console.log(this.props.count.topicList);
-    this.exam()
-  }
-  add(){
-    this.props.dispatch({type:'count/add'})
-  }
-  exam(){
-    var data = {
-      page:1,
-      limit:3
-    }
-    this.props.dispatch({
-      type:'count/topicData',
-      payload:data,
-    })
-
-    // this.props.dispatch({
-    //   type:'count/mockTest',
-    // })
+    
   }
   render(){
-    const { count } = this.props;
     const botBar = {
       height:'100%',
       position:'fixed',
@@ -47,7 +28,7 @@ class IndexPage extends React.Component{
     return (
       <div>
         <NavBar
-          mode="light"
+          mode="dark"
         >首页</NavBar>
 
         <div style={botBar}>
@@ -69,24 +50,7 @@ class IndexPage extends React.Component{
                 });
               }}
             >
-              <List renderHeader={() => ''} className="my-list">
-                {
-                  count.topicList.map((item,i) => {
-                    return (
-                      <Item key={i} extra="10:30" align="top">
-                        <Flex>
-                          <Flex.Item style={{flex:0}}>
-                            <img src={item.author.avatar_url}/> 
-                          </Flex.Item>
-                          <Flex.Item>
-                            {item.title} <Brief>{item.author.loginname}</Brief>
-                          </Flex.Item>
-                        </Flex>
-                      </Item>
-                    )
-                  })
-                }
-              </List>
+              <Home/>
             </TabBar.Item>
             <TabBar.Item
               icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}

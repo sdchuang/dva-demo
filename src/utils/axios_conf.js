@@ -28,7 +28,7 @@ util.ajax.interceptors.request.use( config => {
 // 响应拦截器
 util.ajax.interceptors.response.use(res => {
     // process.env.NODE_ENV == "development" && console.log(res.data.data);
-    console.log(res)
+    // console.log(res)
     if (res.status === 200) return res.data.data;
     else {
         // process.env.NODE_ENV == "development" && console.log(res.data.info);
