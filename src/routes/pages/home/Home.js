@@ -22,17 +22,23 @@ class Home extends React.Component{
       payload:data,
     })
   }
+  toDetail(id){
+    // 参数刷新后同样能读到，显示在地址栏中，需写自定义函数截字符串读参数
+    this.props.history.push(`/detail?topicId=${id}`);
+    // 跳转后的页面不能刷新，刷新后无query字段
+    this.props.history.push({ pathname:'/detail',query:{ topicId: id} })
+  }
 
   render(){
     const { topicList } = this.props;
-    console.log('render',topicList)
+    // console.log('render',topicList)
     return(
       <div>
         <List className="my-list">
           {
             topicList.map((item,i) => {
               return (
-                <Item key={i} extra="10:30" align="top">
+                <Item key={i} onClick={()=>this.toDetail(item.id)} extra="10:30" align="top">
                   {item.title} <Brief>{item.author.loginname}</Brief>
                 </Item>
               )
@@ -45,7 +51,7 @@ class Home extends React.Component{
 }
 
 function mapStateToProps(state){
-  console.log('state',state)
+  // console.log('state',state)
   return {
     topicList:state.topic.topicList
   };

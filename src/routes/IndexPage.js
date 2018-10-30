@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 
-import Home from './pages/Home'
+import Home from './pages/home/Home'
 
 import { NavBar, TabBar } from 'antd-mobile';
 
@@ -50,7 +50,7 @@ class IndexPage extends React.Component{
                 });
               }}
             >
-              <Home/>
+              <Home history ={this.props.history}/>
             </TabBar.Item>
             <TabBar.Item
               icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
@@ -62,6 +62,8 @@ class IndexPage extends React.Component{
                 this.setState({
                   selectedTab: 'yellowTab1',
                 });
+                console.log(this.props)
+                console.log(this.props.history)
               }}
             >
               12

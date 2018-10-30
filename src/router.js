@@ -10,6 +10,10 @@ function RouterConfig({ history, app }) {
     app,
     component:() => import('./routes/IndexPage')
   })
+  let TopicDetail = dynamic({
+    app,
+    component:() => import('./routes/pages/home/TopicDetail')
+  })
   // let Home = dynamic({
   //   app,
   //   component:() => import('./routes/pages/Home')
@@ -23,6 +27,8 @@ function RouterConfig({ history, app }) {
     <Router history={history}>
       <Switch>
         <Route path="/home" exact component={IndexPage} />
+
+        <Route path="/detail" exact component={TopicDetail} />
         {/* <Route path="/home" exact component={Home} />
         <Route path="/mine" exact component={Mine} /> */}
         <Route path="/" render={()=><Redirect to="/home"/>}/>
