@@ -1,22 +1,44 @@
 
 import React from 'react';
 import { connect } from 'dva';
-import { NavBar } from 'antd-mobile';
+import { getRoutes } from "../../../utils/params";
+
+import { NavBar, Card, WhiteSpace } from 'antd-mobile';
 
 class TopicDetail extends React.Component{
   componentDidMount(){
-    console.log(this.props)
-    // console.log(this.props.history.location.query.topicId)
+    this.topicDetail();
+  }
+  topicDetail(){
+    var data = {
+      id:getRoutes().topicId
+    }
+    this.props.dispatch({
+      type:'topic/topicDetail',
+      payload:data,
+    })
   }
 
   render(){
-
+    const { topicDetail } = this.props;
     return (
       <div>
         <NavBar
           mode="dark"
         >详情</NavBar>
-        detail
+        <Card full>
+          <Card.Header
+            title={topicDetail.title}
+            // thumb={topicDetail.author && topicDetail.author.avatar_url}
+            // extra={<span>this is extra</span>}
+          />
+          <Card.Footer content={topicDetail.author && topicDetail.author.loginname} extra={<span>{topicDetail.create_at}</span>} />
+        </Card>
+        <Card full>
+          <Card.Body>
+            <div dangerouslySetInnerHTML = {{ __html:topicDetail.content }}></div>
+          </Card.Body>
+        </Card>
       </div>
     )
   }
@@ -24,7 +46,7 @@ class TopicDetail extends React.Component{
 function mapStateToProps(state){
   // console.log('state',state)
   return {
-    topicList:state.topic.topicList
+    topicDetail:state.topic.topicDetail
   };
 }
 

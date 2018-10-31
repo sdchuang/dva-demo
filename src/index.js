@@ -1,10 +1,13 @@
 import dva from 'dva';
 import './index.css';
+import createHistory from 'history/createBrowserHistory';
 // 
 import 'antd-mobile/dist/antd-mobile.css';
 
 // 1. Initialize
-const app = dva();
+const app = dva({
+  history: createHistory()
+});
 
 // 2. Plugins
 // app.use({});

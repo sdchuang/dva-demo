@@ -1,13 +1,13 @@
 
-import { topic } from '../services/exam'
+import { topic, topicDetail } from '../services/topic'
 
 export default {
 
   namespace: 'topic',
 
   state: {
-    cur:0,
-    topicList:[]
+    topicList:[],
+    topicDetail:{}
   },
 
   subscriptions: {
@@ -22,21 +22,30 @@ export default {
     },
     *topicData({payload},{put,call}){
       const res = yield call(topic,{payload})
-      yield put({type:'exam',payload:res})
-      // yield put({ type: 'save', payload:res });
+      yield put({type:'getTopicData',payload:res})
+    },
+    *topicDetail({payload},{put,call}){
+      const res = yield call(topicDetail,{payload})
+      yield put({type:'getTopicDetail',payload:res})
     },
   },
 
   reducers: {
-    exam(state,{payload}){
-      const newTopic = payload;
+    getTopicData(state,{payload}){
       // console.log('999',payload)
       return {
         ...state,
-        topicList:newTopic
+        topicList:payload
+      }
+    },
+    getTopicDetail(state,{payload}){
+      return {
+        ...state,
+        topicDetail:payload
       }
     },
     save(state, action) {
+      // console.log('lala',action.payload)
       return { ...state, ...action.payload };
     },
   },

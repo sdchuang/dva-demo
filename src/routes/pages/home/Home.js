@@ -26,7 +26,7 @@ class Home extends React.Component{
     // 参数刷新后同样能读到，显示在地址栏中，需写自定义函数截字符串读参数
     this.props.history.push(`/detail?topicId=${id}`);
     // 跳转后的页面不能刷新，刷新后无query字段
-    this.props.history.push({ pathname:'/detail',query:{ topicId: id} })
+    // this.props.history.push({ pathname:'/detail',query:{ topicId: id} })
   }
 
   render(){
