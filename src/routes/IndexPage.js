@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 
 import Home from './pages/home/Home'
+import Mine from './pages/mine/Mine'
 
 import { NavBar, TabBar } from 'antd-mobile';
 
@@ -9,7 +10,7 @@ class IndexPage extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'yellowTab',
+      selectedTab: 'yellowTab11',
       hidden: false,
       fullScreen: false,
     };
@@ -80,7 +81,7 @@ class IndexPage extends React.Component{
                 });
               }}
             >
-              123
+              <Mine history ={this.props.history}/>
             </TabBar.Item>
           </TabBar>
         </div>

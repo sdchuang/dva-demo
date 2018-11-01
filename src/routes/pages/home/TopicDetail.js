@@ -3,10 +3,12 @@ import React from 'react';
 import { connect } from 'dva';
 import { getRoutes } from "../../../utils/params";
 
-import { NavBar, Card, WhiteSpace } from 'antd-mobile';
+import { NavBar, Card, WhiteSpace, List, Icon } from 'antd-mobile';
+const Item = List.Item;
+const Brief = Item.Brief;
 
 class TopicDetail extends React.Component{
-  componentDidMount(){
+  componentWillMount(){
     this.topicDetail();
   }
   topicDetail(){
@@ -18,6 +20,9 @@ class TopicDetail extends React.Component{
       payload:data,
     })
   }
+  toBack(){
+    this.props.history.push('/home');
+  }
 
   render(){
     const { topicDetail } = this.props;
@@ -25,6 +30,8 @@ class TopicDetail extends React.Component{
       <div>
         <NavBar
           mode="dark"
+          icon={<Icon type="left" />}
+          onLeftClick={() => this.toBack()}
         >详情</NavBar>
         <Card full>
           <Card.Header
@@ -39,6 +46,31 @@ class TopicDetail extends React.Component{
             <div dangerouslySetInnerHTML = {{ __html:topicDetail.content }}></div>
           </Card.Body>
         </Card>
+        <WhiteSpace size="lg" />
+
+        <List className="my-list">
+          <Item>{topicDetail.reply_count}回复</Item>
+        </List>
+        <WhiteSpace size="xs" />
+        {
+          topicDetail.replies && topicDetail.replies.map((item,i) => {
+            return(
+              <div key={i}>
+                <WhiteSpace size="sm" />
+                <Card full>
+                  <Card.Header
+                    title={item.author.loginname}
+                    extra={<span>赞</span>}
+                  />
+                  <Card.Body>
+                    <div dangerouslySetInnerHTML = {{ __html:item.content }}></div>
+                  </Card.Body>
+                  <Card.Footer extra={<div>{item.create_at}</div>} />
+                </Card>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }
