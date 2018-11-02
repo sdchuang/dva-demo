@@ -5,7 +5,6 @@ import { getRoutes } from "../../../utils/params";
 
 import { NavBar, Card, WhiteSpace, List, Icon } from 'antd-mobile';
 const Item = List.Item;
-const Brief = Item.Brief;
 
 class TopicDetail extends React.Component{
   componentWillMount(){

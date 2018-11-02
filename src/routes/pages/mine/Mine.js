@@ -10,7 +10,7 @@ class Mine extends React.Component{
     const { getFieldProps } = this.props.form;
     return(
       <div>
-        <List renderHeader={() => 'Custom title（text / image / empty)'}>
+        <List>
           <InputItem
             {...getFieldProps('input3')}
             placeholder="no label"

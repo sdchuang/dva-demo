@@ -10,7 +10,7 @@ class IndexPage extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'yellowTab11',
+      selectedTab: 'yellowTab',
       hidden: false,
       fullScreen: false,
     };
