@@ -44,6 +44,12 @@ export default {
         topicDetail:payload
       }
     },
+    clear(){
+      return{
+        topicList:[],
+        topicDetail:{}
+      }
+    },
     save(state, action) {
       // console.log('lala',action.payload)
       return { ...state, ...action.payload };

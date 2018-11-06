@@ -23,6 +23,9 @@ class Home extends React.Component{
     // console.log('props',this.props)
   }
   topicData(tab){
+    this.props.dispatch({
+      type:'topic/clear'
+    })
     var data = {
       page:1,
       limit:15,

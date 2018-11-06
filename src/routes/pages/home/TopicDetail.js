@@ -11,6 +11,9 @@ class TopicDetail extends React.Component{
     this.topicDetail();
   }
   topicDetail(){
+    this.props.dispatch({
+      type:'topic/clear'
+    })
     var data = {
       id:getRoutes().topicId
     }
